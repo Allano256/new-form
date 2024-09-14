@@ -19,7 +19,7 @@ class ContactForm(forms.Form):
        company=forms.CharField( max_length=100, required=True)
        reason_for_contact = forms.CharField(
         max_length=250,  
-        widget=forms.TextInput(attrs={'placeholder': 'Reason for contact'})
+        widget=forms.Textarea(attrs={'placeholder': 'I am inquiring about...'})
        )
        
        
