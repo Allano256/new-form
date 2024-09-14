@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.core.mail import send_mail
+from django.conf import settings
 from .forms import ContactForm
 from django.contrib import messages
 from django.views import View
@@ -22,10 +24,19 @@ def form_view(request):
             company=form.cleaned_data['company']
             reason_for_contact=form.cleaned_data['reason_for_contact']
 
-            form.save()
-            messages.succes(request, 'Your inquiry was successfully sent!')
-        else:
-            messages.error(request, 'Please check that all fields are filledout correctly!')
+            #Send email
+            send_mail(
+                 'Contact Form Submission', #Subject
+            reason_for_contact, #message body
+            email, #From email 
+
+            ['private_email@eaxmple.com'], #To email, this will be replaced with your private email
+            fail_silently=False # Raise an exception if email sending fails
+
+            )
+            messages.success(request,'Your inquiry was successfully sent!' )
+
+            
     else:
             form=ContactForm()
 
