@@ -6,9 +6,6 @@ from django.contrib import messages
 from django.views import View
 
 
-
-
-
 # Create your views here.
 
 def form_view(request):

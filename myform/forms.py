@@ -5,7 +5,7 @@ from django_countries.fields import CountryField
 class ContactForm(forms.Form):
        first_name = forms.CharField( required=False)
        last_name =forms.CharField( max_length=50, required=False)
-       Email=forms.EmailField( required=False)
+       email=forms.EmailField( required=False)
        Phone=forms.RegexField(
         regex=r'^\+?1?\d{9,15}$', 
         error_messages={
